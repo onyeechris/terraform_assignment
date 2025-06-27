@@ -9,9 +9,6 @@ vpc_cidr_block = "10.0.0.0/16"
 instance_type = "t2.micro"
 ami_id        = "ami-05ffe3c48a9991133"
 
-# AWS Credentials (Set these values securely)
-# aws_access_key_id     = <your-access-key_id>
-# aws_secret_access_key = <your-secret-access-key>
 
 # Note: For security, consider using environment variables instead:
 # export TF_VAR_aws_access_key_id="your_access_key"
