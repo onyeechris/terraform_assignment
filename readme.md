@@ -121,6 +121,7 @@ EC2 Instance (t2.micro)
 - Automated setup via user data script with comprehensive error handling
 - Professional portfolio webpage deployment with modern design
 
+
 Security Layer
 Security Group (Web Server)
 - Inbound Rules:
@@ -169,7 +170,7 @@ terraform {
     region = "us-east-1"
   }
 }
-```
+
 
 Cross-cutting Concerns
 
@@ -371,28 +372,28 @@ Prerequisites
 
 ## Module Deployment Steps
 
-1. - FOR WINDOWS
-    Open the set-aws-creds.ps1 file and set "<AWS_ACCESS_KEY_ID>" and "<AWS_SECRET_ACCESS_KEY>" to your "<AWS_ACCESS_KEY_ID>" and "<AWS_SECRET_ACCESS_KEY>" respectively.
+1. FOR WINDOWS
+    Open the `set-aws-creds.ps1` file and set `"<AWS_ACCESS_KEY_ID>"` and `"<AWS_SECRET_ACCESS_KEY>"` to your `"<YOUR_AWS_ACCESS_KEY_ID>"` and `"<YOUR_AWS_SECRET_ACCESS_KEY>"` respectively.
 
    cd to the project directory with your terminal and run the command:
    
-   - .\set-aws-creds.ps1
+   `.\set-aws-creds.ps1`
 
-2.  - FOR Linux/Mac
-    Open the set-aws-creds.sh file and set "<AWS_ACCESS_KEY_ID>" and "<AWS_SECRET_ACCESS_KEY>" to your "<AWS_ACCESS_KEY_ID>" and "<AWS_SECRET_ACCESS_KEY>" respectively.
+2.  FOR Linux/Mac
+    Open the `set-aws-creds.sh` file and set `"<AWS_ACCESS_KEY_ID>"` and `"<AWS_SECRET_ACCESS_KEY>"` to your `"<YOUR_AWS_ACCESS_KEY_ID>"` and `"<YOUR_AWS_SECRET_ACCESS_KEY>"` respectively.
 
    cd to the project directory with your terminal and run the command:
    
-   - .\set-aws-creds.sh
+   `.\set-aws-creds.sh`
 
 
-3. Apply configuration
+3. Apply configuration:
 
-  - terraform apply --auto-approve
+  `terraform apply --auto-approve`
 
-4. To take down the environment simply run
+4. To take down the environment simply run:
 
-  - terraform destroy --auto-approve
+  `terraform destroy --auto-approve`
 
 
 ## Post-Deployment Verification
