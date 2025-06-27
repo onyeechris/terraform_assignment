@@ -69,85 +69,6 @@ Module Outputs
 
 Module Resources
 
-Networking Resources
-```hcl
-# VPC - Virtual Private Cloud
-resource "aws_vpc" "main" {
-  cidr_block           = var.vpc_cidr_block
-  enable_dns_hostnames = true
-  enable_dns_support   = true
-}
-
-# Internet Gateway - Bidirectional internet access
-resource "aws_internet_gateway" "main" {
-  vpc_id = aws_vpc.main.id
-}
-
-# Public Subnet - Internet-accessible subnet
-resource "aws_subnet" "public" {
-  vpc_id                  = aws_vpc.main.id
-  cidr_block              = "10.0.1.0/24"
-  availability_zone       = var.availability_zone
-  map_public_ip_on_launch = true
-}
-
-# Route Table - Traffic routing configuration
-resource "aws_route_table" "public" {
-  vpc_id = aws_vpc.main.id
-  route {
-    cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.main.id
-  }
-}
-
-# Route Table Association - Link subnet to route table
-resource "aws_route_table_association" "public" {
-  subnet_id      = aws_subnet.public.id
-  route_table_id = aws_route_table.public.id
-}
-
-
-Security Resources
-
-# Security Group - Instance-level firewall
-resource "aws_security_group" "web" {
-  name        = "devops-portfolio-web-sg"
-  description = "Security group for web server"
-  vpc_id      = aws_vpc.main.id
-
-  # Inbound rules
-  ingress {
-    description = "HTTP"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    description = "HTTPS"
-    from_port   = 443
-    to_port     = 443
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    description = "SSH"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  # Outbound rules
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
 
 Compute Resources
 
@@ -450,22 +371,37 @@ Prerequisites
 
 ## Module Deployment Steps
 
-1. Replace <your-access-key_id> and <your-secret-access-key> with your own values in terraform.tfvars file
-2. cd to the project directory with your terminal
+1. `FOR WINDOWS`
+    Open the `set-aws-creds.ps1` file and set `<AWS_ACCESS_KEY_ID>` and `<AWS_SECRET_ACCESS_KEY>` to your `<AWS_ACCESS_KEY_ID>` and `<AWS_SECRET_ACCESS_KEY>` respectively.
+
+   cd to the project directory with your terminal and run the command:
+   `.\set-aws-creds.ps1`
+
+2.   `FOR Linux/Mac`
+    Open the `set-aws-creds.sh` file and set `<AWS_ACCESS_KEY_ID>` and `<AWS_SECRET_ACCESS_KEY>` to your `<AWS_ACCESS_KEY_ID>` and `<AWS_SECRET_ACCESS_KEY>` respectively.
+
+   cd to the project directory with your terminal and run the command:
+   `.\set-aws-creds.sh`
+
 3. Initialize the module
-terraform init
+
+`terraform init`
 
 4. Validate configuration
-terraform validate
+
+`terraform validate`
 
 5. Plan deployment
-terraform plan 
+
+`terraform plan` 
 
 6. Apply configuration
-terraform apply --auto-approve
 
-# To take down the environment simplly run
-terraform destroy --auto-approve
+`terraform apply --auto-approve`
+
+7. To take down the environment simply run
+
+`terraform destroy --auto-approve`
 
 
 ## Post-Deployment Verification
