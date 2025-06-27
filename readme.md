@@ -44,7 +44,7 @@ This infrastructure implements a simple, scalable web application architecture o
 └─────────────────────────────────────┘
 ```
 
-Terraform Module Structure
+## Terraform Module Structure
 
 Module Inputs (Variables)
 
@@ -303,7 +303,7 @@ Modular Design:
 
 Integration Patterns
 
-State Management
+## State Management
 Remote Backend Pattern:
 - S3 bucket: `akachristianonyekachukwudevops`
 - State file: `terraform.tfstate`
@@ -338,7 +338,7 @@ Logging Strategy:
 - nginx access and error logs for web traffic analysis
 - Centralized logging for troubleshooting and monitoring
 
-Component Interactions
+## Component Interactions
 
 Core Data Flows
 
@@ -423,7 +423,7 @@ Infrastructure Management Interface:
 - Infrastructure status with resource identifiers
 - Administrative access via SSH with proper key management
 
-Module Usage
+## Module Usage
 
 Basic Usage
 
@@ -440,7 +440,7 @@ module "devops_portfolio" {
   instance_type        = "t3.micro"
 }
 
-Deployment Instructions
+## Deployment Instructions
 
 Prerequisites
 1. AWS Account with programmatic access and appropriate permissions
@@ -448,7 +448,7 @@ Prerequisites
 3. S3 bucket `akachristianonyekachukwudevops` (with `Block all public access` not enabled) exists for state storage
 4. Proper IAM permissions for EC2, VPC, and related services
 
-Module Deployment Steps
+## Module Deployment Steps
 
 1. Replace <your-access-key_id> and <your-secret-access-key> with your own values in terraform.tfvars file
 2. cd to the project directory with your terminal
@@ -464,11 +464,11 @@ terraform plan
 6. Apply configuration
 terraform apply --auto-approve
 
-## To take down the environment simplly run
+# To take down the environment simplly run
 terraform destroy --auto-approve
 
 
-Post-Deployment Verification
+## Post-Deployment Verification
 
 Check website accessibility
 Copy thye URL displayed in the terminal, after deployment, and paste on the browser the check the website
