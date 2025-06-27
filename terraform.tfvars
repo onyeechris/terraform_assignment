@@ -9,7 +9,3 @@ vpc_cidr_block = "10.0.0.0/16"
 instance_type = "t2.micro"
 ami_id        = "ami-05ffe3c48a9991133"
 
-
-# Note: For security, consider using environment variables instead:
-# export TF_VAR_aws_access_key_id="your_access_key"
-# export TF_VAR_aws_secret_access_key="your_secret_key"
